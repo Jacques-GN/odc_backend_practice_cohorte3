@@ -31,7 +31,7 @@ public class EmployeeUserDetailsService implements UserDetailsService {
         return User.builder()
                 .username(employee.getMail())
                 .password(employee.getPassword())
-                .authorities(List.of(new SimpleGrantedAuthority(employee.getRole())))
+                .authorities(List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE")))
                 .build();
     }
 }
