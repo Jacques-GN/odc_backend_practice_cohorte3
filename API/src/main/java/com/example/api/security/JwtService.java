@@ -18,7 +18,7 @@ import java.util.function.Function;
 /**
  * Service gérant toute la logique liée aux JSON Web Tokens (JWT).
  * C'est ici que les tokens sont créés, décodés et validés.
- */
+**/
 @Service
 public class JwtService {
 
