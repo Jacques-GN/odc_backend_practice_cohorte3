@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.security.test.context.support.WithMockUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.hamcrest.Matchers.*;
@@ -88,6 +89,7 @@ class EmployeeControllerIntegrationTest {
     }
 
     @Test
+    @WithMockUser
     void updateEmployee_shouldReturn200_whenExists() throws Exception {
         EmployeeUpdateDTO dto = new EmployeeUpdateDTO();
         dto.setFirstName("SophieModifiee");
@@ -104,6 +106,7 @@ class EmployeeControllerIntegrationTest {
     }
 
     @Test
+    @WithMockUser
     void partialUpdate_shouldReturn200() throws Exception {
         EmployeePatchDTO dto = new EmployeePatchDTO();
         dto.setFirstName("SophiePatched");
@@ -117,12 +120,14 @@ class EmployeeControllerIntegrationTest {
     }
 
     @Test
+    @WithMockUser
     void deleteEmployeeById_shouldReturn204() throws Exception {
         mockMvc.perform(delete("/employee/{id}", existingEmployee.getId()))
                 .andExpect(status().isNoContent());
     }
 
     @Test
+    @WithMockUser
     void deleteEmployees_shouldReturn204() throws Exception {
         mockMvc.perform(delete("/employees"))
                 .andExpect(status().isNoContent());

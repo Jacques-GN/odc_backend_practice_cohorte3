@@ -96,7 +96,7 @@ public class SecurityConfig {
                         // Authentification et création de compte (pas de token requis ici, on vient pour s'authentifier)
                         .requestMatchers(HttpMethod.POST, "/employee").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/employees").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/employees/**").permitAll()
                         // TOUTES LES AUTRES REQUÊTES nécessitent un token valide
                         .anyRequest().authenticated())
                         
